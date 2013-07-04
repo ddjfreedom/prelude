@@ -27,15 +27,13 @@
   '(auto-complete idle-highlight-mode iy-go-to-char multiple-cursors powerline
                   smart-forward header2 markdown-mode highlight-indentation))
 
-(setq mac-function-modifier 'hyper)
-
 (load-theme 'solarized-dark)
 
 (defvar personal-package-config-dir
-  (expand-file-name "personal-package-config" prelude-personal-dir))
+  (expand-file-name "package-config" prelude-personal-dir))
 
 (add-to-list 'load-path prelude-personal-dir)
-(require 'init-el-get)
+(require 'el-get-init)
 
 (when (file-exists-p personal-package-config-dir)
   (mapc 'load (directory-files personal-package-config-dir 't "^[^#].*el$")))
@@ -50,13 +48,20 @@
 
 (setq slime-default-lisp 'sbcl)
 
-(setq prelude-whitespace nil)
-
 (setq ido-auto-merge-delay-time 99999)
 
 (setq ring-bell-function 'ignore)
 
 (prelude-swap-meta-and-super)
 
-(provide 'personal-init)
-;;; personal-init.el ends here
+(require 'powerline)
+(powerline-default-theme)
+
+(eval-after-load 'flycheck
+  '(setq flycheck-checkers (delq 'emacs-lisp-checkdoc flycheck-checkers)))
+
+(eval-after-load 'haskell-mode
+  (progn
+    (setq haskell-literate-default "tex")))
+
+;;; init.el ends here

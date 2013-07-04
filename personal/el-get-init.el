@@ -18,4 +18,4 @@
 
 (el-get 'sync personal-el-get-packages)
 
-(provide 'init-el-get)
+(provide 'el-get-init)
