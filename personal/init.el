@@ -23,9 +23,11 @@
 ;; stop flyspell-mode from using M-TAB
 (setq flyspell-use-meta-tab nil)
 
+(setq sp-base-key-bindings 'sp)
+(sp--set-base-key-bindings)
+
 (prelude-ensure-module-deps
-  '(auto-complete idle-highlight-mode iy-go-to-char multiple-cursors powerline
-                  smart-forward header2 markdown-mode highlight-indentation))
+ '(idle-highlight-mode jump-char multiple-cursors smart-forward markdown-mode))
 
 (load-theme 'solarized-dark)
 
@@ -38,10 +40,6 @@
 (when (file-exists-p personal-package-config-dir)
   (mapc 'load (directory-files personal-package-config-dir 't "^[^#].*el$")))
 
-;; color for highlight-indentation
-(require 'highlight-indentation)
-
-(add-hook 'c-mode-common-hook 'highlight-indentation-mode)
 (remove-hook 'prelude-c-mode-common-hook 'prelude-c-mode-common-defaults)
 
 (setq show-paren-style 'parenthesis)
@@ -54,9 +52,6 @@
 
 (prelude-swap-meta-and-super)
 
-(require 'powerline)
-(powerline-default-theme)
-
 (eval-after-load 'flycheck
   '(setq flycheck-checkers (delq 'emacs-lisp-checkdoc flycheck-checkers)))
 
@@ -64,4 +59,5 @@
   (progn
     (setq haskell-literate-default "tex")))
 
+(setq prelude-guru nil)
 ;;; init.el ends here

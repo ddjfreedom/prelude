@@ -29,10 +29,8 @@
 (global-set-key (kbd "M-<left>") 'smart-backward)
 (global-set-key (kbd "M-<right>") 'smart-forward)
 
-(require 'iy-go-to-char)
-
-(key-chord-define-global "ff" 'iy-go-to-char)
-(key-chord-define-global "dd" 'iy-go-to-char-backward)
+(key-chord-define-global "ff" 'jump-char-forward)
+(key-chord-define-global "dd" 'jump-char-backward)
 
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)

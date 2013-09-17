@@ -1,3 +1,5 @@
+(add-to-list 'auto-mode-alist '("\\.[tT]e[xX]\\'" . TeX-latex-mode))
+
 (eval-after-load "tex"
   '(progn
      (add-to-list 'TeX-command-list
