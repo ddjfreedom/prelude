@@ -50,8 +50,6 @@
 
 (setq ring-bell-function 'ignore)
 
-(prelude-swap-meta-and-super)
-
 (eval-after-load 'flycheck
   '(setq flycheck-checkers (delq 'emacs-lisp-checkdoc flycheck-checkers)))
 
